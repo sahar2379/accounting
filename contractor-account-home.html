@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Title -->
+  <title>داشبورد ادمین</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./favicon.ico" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="./assets/css/vendor.min.css" />
+  <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/font/bootstrap-icons.css" />
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="./assets/css/theme.min.css?v=1.0" />
+
+  <!-- CSS Leaflet.js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <!-- STYLES -->
+  <style>
+    .small-font {
+      font-size: 8px;
+    }
+
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+
+    /* btn radius */
+    .btn-rounded {
+        border-radius: 6px !important;
+    }
+    .left-align-container {
+      float: left;
+      width: 100%;
+    }
+
+    /* camera icon profile */
+    .edit-icon i {
+      font-size: 20px;
+    }
+    .file-input {
+      display: none;
+    }
+    .input-file {
+      visibility: hidden;
+      position: absolute;
+    }
+    .input-group-addon {
+      background-color: #f1f1f1;
+      border-left: none;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+    .form-control {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      text-align: right;
+    }
+    .btn-success {
+      background-color: #0d6efd;
+    }
+    .input-group-btn {
+      padding: 0;
+    }
+    .custom-width {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .btn-custom {
+      background-color: #D1913E;
+      border-color: #D1913E;
+      color: rgb(0, 0, 0); /* TEXT BUTTON COLOR */
+  }
+
+  .btn-custom:hover {
+      background-color: #b37432; /*  BUTTON COLOR  */
+      border-color: #b37432;
+  }
+  .btn-custom-location {
+    background-color: #D1913E;
+    border-color: #D1913E;
+    color: rgb(0, 0, 0); /*  TEXT COLOR LOCATION  */
+}
+
+.btn-custom-location:hover {
+    background-color: #b37432; /*  BUTTON LOCATION COLOR  */
+    border-color: #b37432;
+}
+
+  </style>
+</head>
+
+<body>
+  <!-- ========== HEADER ========== -->
+  <header id="header" class="navbar navbar-expand-lg navbar-end navbar-light">
+    <div class="container">
+      <nav class="js-mega-menu navbar-nav-wrap">
+        <!-- Default Logo -->
+        <a class="navbar-brand" href="/index.html" aria-label="Front">
+          <img class="navbar-brand-logo" src="/assets/svg/logos/logo.svg" alt="Logo">
+        </a>
+        <!-- End Default Logo -->
+
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-default">
+            <i class="bi-list"></i>
+          </span>
+          <span class="navbar-toggler-toggled">
+            <i class="bi-x"></i>
+          </span>
+        </button>
+        <!-- End Toggler -->
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/index.html">صفحه اصلی</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="hs-has-sub-menu nav-item">
+              <a id="listingsDropdown" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">لیست محصولات</a>
+              <div class="hs-sub-menu dropdown-menu" aria-labelledby="listingsDropdown" style="min-width: 14rem;">
+                <a class="dropdown-item " href="/products-list.html">فهرست</a>
+                <a class="dropdown-item " href="/products-grid.html">فهرست (شبکه)</a>
+              </div>
+            </li>
+            <!-- End Dropdown -->
+
+            <li class="nav-item">
+              <a class="nav-link " href="/product-overview.html">بررسی اجمالی محصولات</a>
+            </li>
+
+            <!-- Pages -->
+            <li class="hs-has-mega-menu nav-item" data-hs-mega-menu-item-options='{
+                "desktop": {
+                  "position": "right",
+                  "maxWidth": "27rem"
+                }
+              }'>
+              <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " aria-current="page" href="#"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">صفحات</a>
+
+              <!-- Mega Menu -->
+              <div class="hs-mega-menu dropdown-menu" aria-labelledby="pagesMegaMenu" style="min-width: 27rem;">
+                <div class="navbar-dropdown-menu-inner">
+                  <span class="dropdown-header">عناصر</span>
+
+                  <div class="row">
+                    <div class="col-sm mb-3 mb-sm-0">
+                      <a class="dropdown-item " href="/categories.html">دسته بندی ها</a>
+                      <a class="dropdown-item " href="/categories-sidebar.html">نوار کناری دسته ها</a>
+                      <a class="dropdown-item " href="/empty-cart.html">سبد خالی</a>
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-sm">
+                      <a class="dropdown-item " href="/cart.html">سبد خرید</a>
+                      <a class="dropdown-item " href="/checkout.html">بررسی</a>
+                      <a class="dropdown-item " href="/order-completed.html">سفارش تکمیل شد</a>
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+                </div>
+
+                <!-- Mega Menu Banner -->
+                <div class="navbar-dropdown-menu-shop-banner">
+                  <div class="d-flex">
+                    <div class="flex-shrink-0">
+                      <img class="navbar-dropdown-menu-shop-banner-img" src="/assets/img/mockups/img4.png"
+                        alt="Image Description">
+                    </div>
+
+                    <div class="flex-grow-1 p-4">
+                      <span class="h4 d-block text-primary">برنده تی شرت</span>
+                      <p>یکی از تی شرت های برند Front ما را برنده شوید.</p>
+                      <a class="btn btn-sm btn-soft-primary btn-transition" href="/index.html">بیشتر بدانید <i
+                          class="bi-chevron-left small"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <!-- End Mega Menu Banner -->
+              </div>
+              <!-- End Mega Menu -->
+            </li>
+            <!-- End Pages -->
+
+            <li class="nav-item">
+              <!-- Search -->
+              <button class="btn btn-ghost-secondary btn-icon" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbarSearch" aria-controls="offcanvasNavbarSearch">
+                <i class="bi-search"></i>
+              </button>
+              <!-- End Search -->
+
+              <!-- Shopping Cart -->
+              <button type="button" class="btn btn-ghost-secondary btn-icon" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbarShoppingCart" aria-controls="offcanvasNavbarShoppingCart">
+                <i class="bi-basket"></i>
+                <span class="cart-item-count ">3</span>
+              </button>
+              <!-- End Shopping Cart -->
+
+              <a class="btn btn-primary btn-transition" href="./page-login-simple.html">ورود</a>
+            </li>
+          </ul>
+        </div>
+        <!-- End Collapse -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main" class="bg-light">
+    <!-- Breadcrumb -->
+    <div class="navbar-dark bg-dark" style="
+          background-image: url(./assets/svg/components/wave-pattern-light.svg);
+        ">
+      <div class="container content-space-1 content-space-b-lg-3">
+        <div class="row align-items-center">
+          <div class="col">
+            <div class="d-none d-lg-block">
+              <h1 class="h2 text-white">داشبورد</h1>
+            </div>
+
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb breadcrumb-light mb-0">
+                <li class="breadcrumb-item">حساب</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  داشبورد ادمین
+                </li>
+              </ol>
+            </nav>
+            <!-- End Breadcrumb -->
+          </div>
+          <!-- End Col -->
+
+          <div class="col-auto">
+            <!-- Responsive Toggle Button -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+              data-bs-target="#sidebarNav" aria-controls="sidebarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-default">
+                <i class="bi-list"></i>
+              </span>
+              <span class="navbar-toggler-toggled">
+                <i class="bi-x"></i>
+              </span>
+            </button>
+            <!-- End Responsive Toggle Button -->
+          </div>
+          <!-- End Col -->
+        </div>
+        <!-- End Row -->
+      </div>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Content Section -->
+    <div class="container content-space-1 content-space-t-lg-0 content-space-b-lg-2 mt-lg-n10">
+      <div class="row">
+        <div class="col-lg-3">
+          <!-- Navbar -->
+          <div class="navbar-expand-lg navbar-light">
+            <div id="sidebarNav" class="collapse navbar-collapse navbar-vertical">
+              <!-- Card -->
+              <div class="card flex-grow-1 mb-5">
+                <div class="card-body">
+                  <!-- Avatar -->
+                  <div class="d-none d-lg-block text-center mb-5">
+                    <div class="avatar avatar-xxl avatar-circle mb-3">
+                      <img id="profileImage" class="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description" />
+                      <!-- Edit icon -->
+                      <div class="edit-icon" onclick="document.getElementById('fileInput').click();">
+                        <i class="bi bi-camera"></i>
+                      </div>
+                      <!-- Hidden file input -->
+                      <input type="file" id="fileInput" class="file-input" accept="image/*" onchange="changeProfileImage(event)">
+
+                    </div>
+
+                    <h4 class="card-title mb-0">ناتالی کورتیس</h4>
+                    <p class="card-text small">natalie@example.com</p>
+                  </div>
+                  <!-- End Avatar -->
+
+                  <!-- Nav -->
+                  <span class="text-cap">حساب</span>
+
+                  <!-- List -->
+                  <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                    <li class="nav-item">
+                      <a class="nav-link" href="./account-home.html">
+                        <i class="bi-person-badge nav-icon"></i>داشبورد
+                      </a>
+
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./account-security.html">
+                        <i class="bi-shield-shaded nav-icon"></i> امنیت
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="./contractor-account-home.html">
+                          <i class="fas fa-tools nav-icon"></i>پیمانکاران
+                      </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="./contractor-account-home.html">
+                        <i class="fas fa-hard-hat nav-icon"></i>مهندسان ناظر
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="./contractor-account-home.html">
+                      <i class="fas fa-user-tie nav-icon"></i>مشاوران
+                  </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="./contractor-account-home.html">
+                    <i class="fas fa-store nav-icon"></i>فروشندگان
+                </a>
+            </li>
+
+                    <li class="nav-item"></li>
+                      <a class="nav-link" href="./account-overview.html">
+                        <i class="bi-sliders nav-icon"></i> تنظیمات پروفایل
+                      </a>
+                    </li>
+                  </ul>
+                  <!-- End List -->
+
+                  <span class="text-cap">فروشگاه</span>
+
+                  <!-- List -->
+                  <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                    <li class="nav-item">
+                      <a class="nav-link " href="./admin-account-products.html">
+                        <i class="bi-shop-window nav-icon"></i> محصولات
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="./admin-account-order.html">
+                        <i class="bi-receipt-cutoff nav-icon"></i> سفارشات
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="./admin-account-support.html">
+                        <i class="bi-envelope nav-icon"></i> تیکت ها
+                      </a>
+                    </li>
+
+
+                  </ul>
+
+                  <span class="text-cap">کاربران</span>
+
+                   <!-- List -->
+                   <ul class="nav nav-sm nav-tabs nav-vertical mb-4">
+                    <li class="nav-item">
+                      <a class="nav-link " href="./admin-account-users.html">
+                        <i class="bi-person nav-icon"></i> لیست کاربران
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="./admin-account-newsletter.html">
+                        <i class="bi-newspaper nav-icon"></i> خبرنامه
+                      </a>
+                    </li>
+
+                  </ul>
+
+                  <!-- End List -->
+
+                  <div class="d-lg-none">
+                    <div class="dropdown-divider"></div>
+
+                    <!-- List -->
+                    <ul class="nav nav-sm nav-tabs nav-vertical">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          <i class="bi-box-arrow-right nav-icon"></i> خروج
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- End List -->
+                  </div>
+                  <!-- End Nav -->
+                </div>
+              </div>
+              <!-- End Card -->
+            </div>
+          </div>
+          <!-- End Navbar -->
+        </div>
+        <!-- End Col -->
+
+              <div class="col-12 col-sm-12 col-md-10 col-lg-9 col-xl-8">
+                <!-- Card -->
+                <div class="card">
+                  <!-- Header -->
+                  <div class="card-header border-bottom">
+                    <h5 class="card-header-title">ثبت نام پیمانکاران</h5>
+                    <div class="d-flex justify-content-center align-items-center min-vh-80 mb-4 mt-4">
+                    </div>
+                       <!-- upload video  -->
+                    <div class="row justify-content-center gx-3">
+                      <div class="custom-width">
+                        <h4 style="font-size: 16px;">یک ویدیو از خلاصه تمامی نمونه کارهای خود آپلود کنید.</h4>
+                        <form>
+                          <div class="input-group">
+                            <span class="input-group-addon">
+                              <i class="fas fa-video"></i>
+                            </span>
+                            <input type="text" class="form-control" disabled placeholder="بارگذاری ویدیو">
+                            <span class="input-group-btn">
+                              <label class="btn btn-secondary" for="videoUpload"><i class="fa fa-search"></i>بارگذاری</label>
+                              <input type="file" name="video" class="input-file" id="videoUpload" accept="video/*">
+                            </span>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
+                    <!-- Start of Forms Section -->
+                  <form class="needs-validation" novalidate>
+                    <div class="row justify-content-center gx-3">
+                      <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4 position-relative mt-1 mb-3">
+                          <label for="validationTooltip01" class="form-label">نام</label>
+                          <input type="text" class="form-control" id="validationTooltip01" value="" required>
+                          <div class="invalid-tooltip">
+                            لطفا نام خود را وارد کنید!
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 position-relative mt-1 mb-3">
+                          <label for="validationTooltip02" class="form-label">نام خانوادگی</label>
+                          <input type="text" class="form-control" id="validationTooltip02" value="" required>
+                          <div class="invalid-tooltip">
+                            لطفا نام خانوادگی خود را وارد کنید!
+                          </div>
+                        </div>
+
+                        <div class="col-md-4 position-relative mt-1 mb-3">
+                          <label for="validationTooltipUsername" class="form-label">کد ملی</label>
+                          <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                            <div class="invalid-tooltip">
+                              لطفا کد ملی خود را وارد کنید.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                        <!-- Province and City Selection -->
+                        <div class="row justify-content-center gx-3">
+                          <div class="col-md-4 position-relative mt-1 mb-3">
+                            <label for="province" class="form-label">استان</label>
+                            <select class="form-select" id="province" required>
+                              <option selected disabled value=""></option>
+                              <option value="آذربایجان شرقی">آذربایجان شرقی</option>
+                                    <option value="آذربایجان غربی">آذربایجان غربی</option>
+                                    <option value="اردبیل">اردبیل</option>
+                                    <option value="اصفهان">اصفهان</option>
+                                    <option value="البرز">البرز</option>
+                                    <option value="ایلام">ایلام</option>
+                                    <option value="بوشهر">بوشهر</option>
+                                    <option value="تهران">تهران</option>
+                                    <option value="چهارمحال و بختیاری">چهارمحال و بختیاری</option>
+                                    <option value="خراسان جنوبی">خراسان جنوبی</option>
+                                    <option value="خراسان رضوی">خراسان رضوی</option>
+                                    <option value="خراسان شمالی">خراسان شمالی</option>
+                                    <option value="خوزستان">خوزستان</option>
+                                    <option value="زنجان">زنجان</option>
+                                    <option value="سمنان">سمنان</option>
+                                    <option value="سیستان و بلوچستان">سیستان و بلوچستان</option>
+                                    <option value="فارس">فارس</option>
+                                    <option value="قزوین">قزوین</option>
+                                    <option value="قم">قم</option>
+                                    <option value="کردستان">کردستان</option>
+                                    <option value="کرمان">کرمان</option>
+                                    <option value="کرمانشاه">کرمانشاه</option>
+                                    <option value="کهگیلویه و بویراحمد">کهگیلویه و بویراحمد</option>
+                                    <option value="گلستان">گلستان</option>
+                                    <option value="گیلان">گیلان</option>
+                                    <option value="لرستان">لرستان</option>
+                                    <option value="مازندران">مازندران</option>
+                                    <option value="مرکزی">مرکزی</option>
+                                    <option value="هرمزگان">هرمزگان</option>
+                                    <option value="همدان">همدان</option>
+                                    <option value="یزد">یزد</option>
+                            </select>
+                            <div class="invalid-tooltip">
+                              لطفا یک استان معتبر انتخاب کنید.
+                            </div>
+                          </div>
+
+                          <div class="col-md-4 position-relative mt-1 mb-3">
+                            <label for="city" class="form-label">شهر</label>
+                            <select class="form-select" id="city" required>
+                              <option selected disabled value=""></option>
+                            </select>
+                            <div class="invalid-tooltip">
+                              لطفا شهر مورد نظر را انتخاب کنید.
+                            </div>
+                          </div>
+
+                        <!-- Postal Code and Address -->
+                        <div class="col-md-4 position-relative mt-1 mb-3">
+                          <label for="validationTooltip05" class="form-label">کدپستی</label>
+                          <input type="text" class="form-control" id="postalCodeInput" required>
+                          <div class="invalid-tooltip">
+                            لطفا کدپستی را صحیح وارد کنید.
+                          </div>
+                          <div id="postalCodeFeedback" class="valid-feedback">
+                            کد پستی به درستی وارد شده است.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-center gx-3">
+                        <form class="row justify-content-center gx-3">
+                          <form class="row g-3 needs-validation" novalidate>
+                            <div class="col-md-12 position-relative mt-1 mb-3">
+                              <label for="validationTooltip01" class="form-label">آدرس</label>
+                              <input type="text" class="form-control" id="validationTooltip01" value="" required>
+                              <div class="invalid-tooltip">
+                                لطفا آدرس خود را وارد کنید!
+                              </div>
+                            </div>
+                          </form>
+                        </form>
+
+                              <div class="row justify-content-center gx-2">
+                                <!-- First column for image upload -->
+                                <div class="col-md-4 mt-1 mb-3">
+                                  <label for="imageUpload1" class="form-label">رضایت نامه مشتریان</label>
+                                  <input class="form-control" type="file" id="imageUpload1" accept="image/*" required>
+                                  <div class="invalid-feedback">
+                                    لطفا تصاویر رضایت نامه متشریان را وارد کنید.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    تصاویر به درستی بارگزاری شد!
+                                  </div>
+                                </div>
+
+                                <!-- Second column for image upload -->
+                                <div class="col-md-4 mt-1 mb-3">
+                                  <label for="imageUpload2" class="form-label">پشت و روی کارت ملی</label>
+                                  <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
+                                  <div class="invalid-feedback">
+                                    لطفا تصاویر کارت ملی را وارد کنید.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    تصاویر کارت ملی بارگزاری شد!
+                                  </div>
+                                </div>
+
+                                <!-- Third column for image upload -->
+                                <div class="col-md-4 mt-1 mb-3">
+                                  <label for="imageUpload3" class="form-label">صفحه اول شناسنامه</label>
+                                  <input class="form-control" type="file" id="imageUpload3" accept="image/*" required>
+                                  <div class="invalid-feedback">
+                                    لطفا تصاویر شناسنامه را وارد کنید.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    تصاویر شناسنامه با موفقیت بارگزاری شد!
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row justify-content-center gx-2">
+                                <!-- First column for image upload -->
+                                <div class="col-md-4 mt-1 mb-3">
+                                  <label for="imageUpload1" class="form-label">نمونه کارهای اجراشده</label>
+                                  <input class="form-control" type="file" id="imageUpload1" accept="image/*" required>
+                                  <div class="invalid-feedback">
+                                    لطفا تصاویر نمونه کارهای خود را وارد کنید.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    تصاویر نمونه کارها به موفقیت بارگزاری شد!
+                                  </div>
+                                </div>
+
+                                <!-- Second column for image upload -->
+                                <div class="col-md-8 mt-1 mb-3">
+                                  <label for="imageUpload2" class="form-label">سند موقعیت مکانی یا قولنامه دارای کد رهگیری</label>
+                                  <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
+                                  <div class="invalid-feedback">
+                                    لطفا تصاویر اسناد را وارد کنید.
+                                  </div>
+                                  <div class="valid-feedback">
+                                    تصاویر اسناد با موفقیت بارگزاری شد!
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- third column for image upload -->
+                              <div class="row justify-content-center gx-2">
+                              <div class="col-md-12 mt-1 mb-3">
+                                <label for="imageUpload2" class="form-label">گواهی رتبه پیمانکاری از سازمان نظام مهندسی</label>
+                                <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
+                                <div class="invalid-feedback">
+                                  لطفا تصویر گواهی پیمانکاری خود را وارد کنید.
+                                </div>
+                                <div class="valid-feedback">
+                                  تصاویر گواهی با موفقیت بارگزاری شد!
+                                </div>
+                              </div>
+                            </div>
+
+                              <div class="row justify-content-center gx-2">
+                              <div class="col-md-6 position-relative mt-1 mb-3">
+                                <label for="validationTooltipUsername" class="form-label">شماره حساب</label>
+                                <div class="input-group has-validation">
+                                  <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                                  <div class="invalid-tooltip">
+                                    لطفا شماره حساب خود را وارد کنید.
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 position-relative mt-1 mb-3">
+                                <label for="validationTooltipUsername" class="form-label">شماره شبا</label>
+                                <div class="input-group has-validation">
+                                  <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                                  <div class="invalid-tooltip">
+                                    لطفا شماره تایید شبای خود را وارد کنید.
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                              <!-- MAIN FORM  -->
+
+                            <form id="mainForm">
+                              <!--   HIDE FIELD    -->
+                              <input type="hidden" id="savedLocation" name="location">
+
+                              <!-- choose lication -->
+                              <div class="mb-5 mt-1">
+                                <label for="selectedLocation" class="form-label">موقعیت مکانی</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="selectedLocation" placeholder="مختصات ذخیره شده" readonly>
+                                    <button type="button" class="btn btn-custom btn-rounded" data-bs-toggle="modal" data-bs-target="#locationModal">
+                                      انتخاب لوکیشن از روی نقشه
+                                  </button>
+
+                                </div>
+                            </div>
+                          </form>
+
+                        <!-- modal choose location -->
+                        <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="locationModalLabel">انتخاب لوکیشن از روی نقشه</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <!-- place search  -->
+                                      <div class="mb-3">
+                                          <label for="searchLocation" class="form-label">جستجوی شهر یا منطقه:</label>
+                                          <div class="input-group">
+                                              <input type="text" class="form-control" id="searchLocation" placeholder="نام شهر یا منطقه را وارد کنید">
+                                              <button type="button" class="btn btn-secondary" id="searchBtn">جستجو</button>
+                                          </div>
+                                      </div>
+                                      <!-- map -->
+                                      <div id="map"></div>
+                                      <!-- show location-->
+                                      <div class="mt-3">
+                                          <label for="location" class="form-label">مختصات انتخابی:</label>
+                                          <input type="text" class="form-control" id="location" placeholder="مختصات در اینجا نمایش داده می‌شود" readonly>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                                      <button type="button" class="btn btn-custom-location" id="saveLocationBtn">ذخیره لوکیشن</button>
+
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+
+                      <!-- subbmit button  -->
+                      <button class="btn btn-custom" type="submit">ثبت نام</button>
+
+                    </form>
+                  </div>
+              </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="card-body">
+              <div class="row">
+
+              </div>
+              <!-- End Row -->
+
+            </div>
+            <!-- End Body -->
+          </div>
+          <!-- End Card -->
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Content Section -->
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-dark">
+    <div class="container pb-1 pb-lg-5">
+      <div class="row content-space-t-2">
+        <div class="col-lg-3 mb-7 mb-lg-0">
+          <!-- Logo -->
+          <div class="mb-5">
+            <a class="navbar-brand" href="./index.html" aria-label="Space">
+              <img class="navbar-brand-logo" src="./assets/svg/logos/logo-white.svg" alt="Image Description" />
+            </a>
+          </div>
+          <!-- End Logo -->
+
+          <!-- List -->
+          <ul class="list-unstyled list-py-1">
+            <li>
+              <a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> 153 ویلیامسون پلازا،
+                مگیبرگ</a>
+            </li>
+            <li>
+              <a class="link-sm link-light" href="tel:1-062-109-9222"><i class="bi-telephone-inbound-fill me-1"></i> +1
+                (062)
+                109-9222</a>
+            </li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Col -->
+
+        <div class="col-sm mb-7 mb-sm-0">
+          <h5 class="text-white mb-3">شرکت</h5>
+
+          <!-- List -->
+          <ul class="list-unstyled list-py-1 mb-0">
+            <li><a class="link-sm link-light" href="#">در باره</a></li>
+            <li>
+              <a class="link-sm link-light" href="#">مشاغل
+                <span class="badge bg-warning text-dark rounded-pill ms-1">استخدام می کنیم</span></a>
+            </li>
+            <li><a class="link-sm link-light" href="#">بلاگ</a></li>
+            <li>
+              <a class="link-sm link-light" href="#">مشتریان <i class="bi-box-arrow-up-right small ms-1"></i></a>
+            </li>
+            <li>
+              <a class="link-sm link-light" href="#">ما را استخدام کنید</a>
+            </li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Col -->
+
+        <div class="col-sm mb-7 mb-sm-0">
+          <h5 class="text-white mb-3">امکانات</h5>
+
+          <!-- List -->
+          <ul class="list-unstyled list-py-1 mb-0">
+            <li>
+              <a class="link-sm link-light" href="#">مطبوعات <i class="bi-box-arrow-up-right small ms-1"></i></a>
+            </li>
+            <li>
+              <a class="link-sm link-light" href="#">یادداشت های انتشار</a>
+            </li>
+            <li><a class="link-sm link-light" href="#">ادغام ها</a></li>
+            <li><a class="link-sm link-light" href="#">قیمت گذاری</a></li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Col -->
+
+        <div class="col-sm mb-7 mb-sm-0">
+          <h5 class="text-white mb-3">مستندات</h5>
+
+          <!-- List -->
+          <ul class="list-unstyled list-py-1 mb-0">
+            <li><a class="link-sm link-light" href="#">حمایت کردن</a></li>
+            <li><a class="link-sm link-light" href="#">اسناد</a></li>
+            <li><a class="link-sm link-light" href="#">وضعیت</a></li>
+            <li><a class="link-sm link-light" href="#">مرجع API</a></li>
+            <li><a class="link-sm link-light" href="#">الزامات فنی</a></li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Col -->
+
+        <div class="col-sm">
+          <h5 class="text-white mb-3">منابع</h5>
+
+          <!-- List -->
+          <ul class="list-unstyled list-py-1 mb-5">
+            <li>
+              <a class="link-sm link-light" href="#"><i class="bi-question-circle-fill me-1"></i> کمک</a>
+            </li>
+            <li>
+              <a class="link-sm link-light" href="#"><i class="bi-person-circle me-1"></i> حساب شما</a>
+            </li>
+          </ul>
+          <!-- End List -->
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+
+      <div class="border-top border-white-10 my-7"></div>
+
+      <div class="row mb-7">
+        <div class="col-sm mb-3 mb-sm-0">
+          <!-- Socials -->
+          <ul class="list-inline list-separator list-separator-light mb-0">
+            <li class="list-inline-item">
+              <a class="link-sm link-light" href="#">حریم خصوصی &amp; خط مشی</a>
+            </li>
+            <li class="list-inline-item">
+              <a class="link-sm link-light" href="#">مقررات</a>
+            </li>
+            <li class="list-inline-item">
+              <a class="link-sm link-light" href="#">نقشه سایت</a>
+            </li>
+          </ul>
+          <!-- End Socials -->
+        </div>
+
+        <div class="col-sm-auto">
+          <!-- Socials -->
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                <i class="bi-facebook"></i>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                <i class="bi-google"></i>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                <i class="bi-twitter"></i>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <a class="btn btn-soft-light btn-xs btn-icon" href="#">
+                <i class="bi-github"></i>
+              </a>
+            </li>
+
+            <li class="list-inline-item">
+              <!-- Button Group -->
+              <div class="btn-group">
+                <button type="button" class="btn btn-soft-light btn-xs dropdown-toggle" id="footerSelectLanguage"
+                  data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                  <span class="d-flex align-items-center">
+                    <img class="avatar avatar-xss avatar-circle ms-2"
+                      src="./assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Image description" width="16" />
+                    <span>انگلیسی</span>
+                  </span>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="footerSelectLanguage">
+                  <a class="dropdown-item d-flex align-items-center active" href="#">
+                    <img class="avatar avatar-xss avatar-circle ms-2"
+                      src="./assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Image description" width="16" />
+                    <span>انگلیسی</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <img class="avatar avatar-xss avatar-circle ms-2"
+                      src="./assets/vendor/flag-icon-css/flags/1x1/de.svg" alt="Image description" width="16" />
+                    <span>آلمانی</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <img class="avatar avatar-xss avatar-circle ms-2"
+                      src="./assets/vendor/flag-icon-css/flags/1x1/es.svg" alt="Image description" width="16" />
+                    <span>اسپانیا</span>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <img class="avatar avatar-xss avatar-circle ms-2"
+                      src="./assets/vendor/flag-icon-css/flags/1x1/cn.svg" alt="Image description" width="16" />
+                    <span>چینی</span>
+                  </a>
+                </div>
+              </div>
+              <!-- End Button Group -->
+            </li>
+          </ul>
+          <!-- End Socials -->
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="w-md-85 text-lg-center mx-lg-auto">
+        <p class="text-white-50 small">
+          &copy; جلو. Htmlstream 2021. تمامی حقوق محفوظ است.
+        </p>
+        <p class="text-white-50 small">
+          هنگامی که از سایت‌ها، سرویس‌ها یا ابزارهای ما بازدید می‌کنید یا با
+          آنها تعامل می‌کنید، ما یا ارائه‌دهندگان خدمات مجاز ما ممکن است از
+          کوکی‌ها برای ذخیره اطلاعات استفاده کنیم تا تجربه بهتر، سریع‌تر و
+          ایمن‌تری و برای اهداف بازاریابی به شما ارائه کنیم.
+        </p>
+      </div>
+      <!-- End Copyright -->
+    </div>
+  </footer>
+
+  <!-- ========== END FOOTER ========== -->
+
+  <!-- ========== SECONDARY CONTENTS ========== -->
+
+
+  <!-- Go To -->
+  <a class="js-go-to go-to position-fixed" href="javascript:;" style="visibility: hidden" data-hs-go-to-options='{
+       "offsetTop": 700,
+       "position": {
+         "init": {
+           "right": "2rem"
+         },
+         "show": {
+           "bottom": "2rem"
+         },
+         "hide": {
+           "bottom": "-2rem"
+         }
+       }
+     }'>
+    <i class="bi-chevron-up"></i>
+  </a>
+
+  <!-- Offcanvas Search -->
+  <div class="offcanvas offcanvas-top offcanvas-navbar-search bg-light" tabindex="-1" id="offcanvasNavbarSearch">
+    <div class="offcanvas-body">
+      <div class="container">
+        <div class="w-lg-75 mx-lg-auto">
+          <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+
+          <div class="mb-7">
+            <!-- Form -->
+            <form>
+              <!-- Input Card -->
+              <div class="input-card">
+                <div class="input-card-form">
+                  <input type="text" class="form-control form-control-lg" placeholder="جستجو محصولات"
+                    aria-label="جستجو محصولات" />
+                </div>
+                <button type="button" class="btn btn-primary btn-lg">
+                  جستجو
+                </button>
+              </div>
+              <!-- End Input Card -->
+            </form>
+            <!-- End Form -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- JS Implementing Plugins -->
+  <script src="./assets/js/vendor.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="./assets/js/theme.min.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function () {
+      // INITIALIZATION OF HEADER
+      // =======================================================
+      new HSHeader("#header").init();
+
+      // INITIALIZATION OF MEGA MENU
+      // =======================================================
+      new HSMegaMenu(".js-mega-menu", {
+        desktop: {
+          position: "left",
+        },
+      });
+
+      // INITIALIZATION OF SHOW ANIMATIONS
+      // =======================================================
+      new HSShowAnimation(".js-animation-link");
+
+      // INITIALIZATION OF BOOTSTRAP VALIDATION
+      // =======================================================
+      HSBsValidation.init(".js-validate", {
+        onSubmit: (data) => {
+          data.event.preventDefault();
+          alert("Submited");
+        },
+      });
+
+      // INITIALIZATION OF BOOTSTRAP DROPDOWN
+      // =======================================================
+      HSBsDropdown.init();
+
+      // INITIALIZATION OF GO TO
+      // =======================================================
+      new HSGoTo(".js-go-to");
+
+      // INITIALIZATION OF INPUT MASK
+      // =======================================================
+      HSCore.components.HSMask.init(".js-input-mask");
+
+      // INITIALIZATION OF SELECT
+      // =======================================================
+      HSCore.components.HSTomSelect.init(".js-select", {
+        render: {
+          option: function (data, escape) {
+            return data.optionTemplate;
+          },
+          item: function (data, escape) {
+            return data.optionTemplate;
+          },
+        },
+      });
+    })();
+  </script>
+  <!-- JavaScript for province-city dropdowns and validation -->
+  <script>
+    const citiesByProvince = {
+      "آذربایجان شرقی": ["تبریز", "مراغه", "مرند", "اهر", "هشترود", "بستان‌آباد", "جلفا", "میانه", "اسکو", "سراب"],
+              "آذربایجان غربی": ["ارومیه", "خوی", "بوکان", "میاندوآب", "مهاباد", "سلماس", "نقده", "شاهین‌دژ", "پیرانشهر", "ماکو"],
+              "اردبیل": ["اردبیل", "پارس‌آباد", "مشگین‌شهر", "خلخال", "نمین", "بیله‌سوار", "گرمی", "نیر"],
+              "اصفهان": ["اصفهان", "کاشان", "خمینی‌شهر", "شاهین‌شهر", "فلاورجان", "نجف‌آباد", "نطنز", "زرین‌شهر", "آران و بیدگل"],
+              "البرز": ["کرج", "نظرآباد", "فردیس", "اشتهارد", "هشتگرد", "محمدشهر", "مشکین‌دشت"],
+              "ایلام": ["ایلام", "دهلران", "مهران", "آبدانان", "دره‌شهر", "ایوان"],
+              "بوشهر": ["بوشهر", "برازجان", "دشتی", "کنگان", "جم", "عسلویه", "اهرم", "دیر"],
+              "تهران": ["تهران", "ری", "اسلام‌شهر", "شهریار", "ورامین", "پاکدشت", "قدس", "بهارستان", "رباط‌کریم", "دماوند", "فیروزکوه"],
+              "چهارمحال و بختیاری": ["شهرکرد", "بروجن", "فارسان", "لردگان", "سامان", "فرخ‌شهر", "هفشجان"],
+              "خراسان جنوبی": ["بیرجند", "طبس", "فردوس", "قاین", "نهبندان", "سرایان", "بشرویه"],
+              "خراسان رضوی": ["مشهد", "نیشابور", "سبزوار", "تربت‌حیدریه", "تربت‌جام", "چناران", "کاشمر", "قوچان", "فریمان"],
+              "خراسان شمالی": ["بجنورد", "شیروان", "اسفراین", "آشخانه", "فاروج", "گرمه", "جاجرم"],
+              "خوزستان": ["اهواز", "آبادان", "خرمشهر", "دزفول", "ماهشهر", "شوشتر", "اندیمشک", "بهبهان", "رامهرمز", "شادگان"],
+              "زنجان": ["زنجان", "ابهر", "خرمدره", "ماه‌نشان", "سلطانیه", "طارم", "ایجرود"],
+              "سمنان": ["سمنان", "شاهرود", "دامغان", "گرمسار", "مهدی‌شهر", "سرخه"],
+              "سیستان و بلوچستان": ["زاهدان", "چابهار", "ایرانشهر", "زابل", "سراوان", "خاش", "کنارک", "نیک‌شهر"],
+              "فارس": ["شیراز", "مرودشت", "کازرون", "فسا", "داراب", "لار", "نی‌ریز", "جهرم", "لامرد", "اقلید"],
+              "قزوین": ["قزوین", "تاکستان", "آبیک", "البرز", "بویین‌زهرا", "خرمدشت", "محمدیه"],
+              "قم": ["قم"],
+              "کردستان": ["سنندج", "مریوان", "سقز", "بانه", "بیجار", "قروه", "دیواندره", "کامیاران"],
+              "کرمان": ["کرمان", "رفسنجان", "سیرجان", "جیرفت", "زرند", "بم", "کهنوج", "بردسیر", "بافت"],
+              "کرمانشاه": ["کرمانشاه", "اسلام‌آباد غرب", "هرسین", "صحنه", "پاوه", "سرپل ذهاب", "قصرشیرین", "سنقر"],
+              "کهگیلویه و بویراحمد": ["یاسوج", "دهدشت", "گچساران", "دوگنبدان", "لیکک", "چرام"],
+              "گلستان": ["گرگان", "گنبد کاووس", "بندر ترکمن", "آق‌قلا", "علی‌آباد کتول", "مینودشت", "کلاله"],
+              "گیلان": ["رشت", "انزلی", "لاهیجان", "لنگرود", "آستانه", "رودسر", "فومن", "صومعه‌سرا"],
+              "لرستان": ["خرم‌آباد", "بروجرد", "دورود", "کوهدشت", "الیگودرز", "ازنا", "نورآباد", "الشتر"],
+              "مازندران": ["ساری", "بابل", "آمل", "قائم‌شهر", "تنکابن", "چالوس", "نکا", "بهشهر"],
+              "مرکزی": ["اراک", "ساوه", "خمین", "محلات", "شازند", "تفرش", "دلیجان"],
+              "هرمزگان": ["بندرعباس", "قشم", "کیش", "بندر لنگه", "میناب", "جاسک", "حاجی‌آباد"],
+              "همدان": ["همدان", "ملایر", "نهاوند", "تویسرکان", "رزن", "فامنین", "اسدآباد", "بهار"],
+              "یزد": ["یزد", "اردکان", "میبد", "بافق", "مهریز", "ابرکوه", "تفت"]
+          };
+
+    document.getElementById('province').addEventListener('change', function() {
+      const province = this.value;
+      const citySelect = document.getElementById('city');
+      citySelect.innerHTML = '<option selected disabled value="">شهر را انتخاب کنید...</option>';
+
+      if (province in citiesByProvince) {
+        citiesByProvince[province].forEach(function(city) {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          citySelect.appendChild(option);
+        });
+      }
+    });
+
+    // Validation for the form
+    (() => {
+      'use strict';
+
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    function changeProfileImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('profileImage').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom validation script -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation');
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+
+  <!-- Custom Script for Google Map and Validation -->
+  <script>
+    // Initialize Google Map
+    let map;
+    let marker;
+
+    function initMap() {
+      // Default location (Tehran, Iran)
+      const defaultLocation = { lat: 35.6892, lng: 51.3890 };
+
+      // Create the map centered at the default location
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: defaultLocation,
+        zoom: 10,
+      });
+
+      // Place a marker on the default location
+      marker = new google.maps.Marker({
+        position: defaultLocation,
+        map: map,
+        draggable: true, // Allow the user to drag the marker
+      });
+
+      // Update latitude and longitude input fields when the marker is moved
+      google.maps.event.addListener(marker, 'dragend', function(event) {
+        document.getElementById('latitude').value = event.latLng.lat();
+        document.getElementById('longitude').value = event.latLng.lng();
+      });
+
+      // When the user clicks on the map, move the marker to the clicked location
+      google.maps.event.addListener(map, 'click', function(event) {
+        marker.setPosition(event.latLng);
+        document.getElementById('latitude').value = event.latLng.lat();
+        document.getElementById('longitude').value = event.latLng.lng();
+      });
+    }
+
+    // Custom Bootstrap form validation
+    (function () {
+      'use strict'
+
+      var forms = document.querySelectorAll('.needs-validation')
+
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })();
+  </script>
+
+  <!-- لینک به جاوااسکریپت بوت‌استرپ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- لینک به جاوااسکریپت Leaflet.js -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<script>
+   map;
+   marker;
+
+  // تنظیمات نقشه
+  function initializeMap() {
+      map = L.map('map').setView([35.6892, 51.3890], 13); // موقعیت پیش‌فرض: تهران
+
+      // بارگذاری نقشه از OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      // اضافه کردن قابلیت کلیک روی نقشه برای انتخاب مکان
+      map.on('click', function(e) {
+          var lat = e.latlng.lat;
+          var lng = e.latlng.lng;
+
+          // اگر مارکر از قبل وجود دارد، حذف شود
+          if (marker) {
+              map.removeLayer(marker);
+          }
+
+          // ایجاد یک مارکر جدید در محل کلیک
+          marker = L.marker([lat, lng]).addTo(map);
+
+          // ثبت مختصات در ورودی
+          document.getElementById('location').value = lat + ', ' + lng;
+      });
+  }
+
+  // وقتی مودال باز شد، نقشه را رفرش کن
+  var locationModal = document.getElementById('locationModal');
+  locationModal.addEventListener('shown.bs.modal', function () {
+      if (!map) {
+          initializeMap(); // نقشه برای اولین بار ساخته می‌شود
+      } else {
+          map.invalidateSize(); // رفرش نقشه برای اطمینان از نمایش درست
+      }
+  });
+
+  // جستجوی مکان با استفاده از Nominatim API
+  document.getElementById('searchBtn').addEventListener('click', function () {
+      var locationName = document.getElementById('searchLocation').value;
+      if (locationName) {
+          fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${locationName}`)
+          .then(response => response.json())
+          .then(data => {
+              if (data.length > 0) {
+                  var lat = data[0].lat;
+                  var lon = data[0].lon;
+
+                  // حرکت به مکان پیدا شده روی نقشه
+                  map.setView([lat, lon], 13);
+
+                  // اضافه کردن مارکر
+                  if (marker) {
+                      map.removeLayer(marker);
+                  }
+                  marker = L.marker([lat, lon]).addTo(map);
+
+                  // ثبت مختصات در ورودی
+                  document.getElementById('location').value = lat + ', ' + lon;
+              } else {
+                  alert("مکانی یافت نشد");
+              }
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      } else {
+          alert("لطفاً نام شهر یا منطقه را وارد کنید");
+      }
+  });
+
+  // ذخیره مختصات
+  document.getElementById('saveLocationBtn').addEventListener('click', function () {
+      // گرفتن مختصات از فیلد مربوطه
+      var selectedLocation = document.getElementById('location').value;
+
+      // ذخیره مختصات در فیلد مخفی فرم اصلی
+      document.getElementById('savedLocation').value = selectedLocation;
+
+      // نمایش مختصات در فیلد خواندنی فرم اصلی
+      document.getElementById('selectedLocation').value = selectedLocation;
+
+      // بستن مودال
+      var locationModalEl = document.getElementById('locationModal');
+      var modalInstance = bootstrap.Modal.getInstance(locationModalEl);
+      modalInstance.hide();
+  });
+
+</script>
+
+</body>
+
+</html>
