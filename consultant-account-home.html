@@ -342,7 +342,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="./contractor-account-home.html">
+                  <a class="nav-link" href="./consultant-account-home.html">
                       <i class="fas fa-user-tie nav-icon"></i>مشاوران
                   </a>
               </li>
@@ -438,15 +438,15 @@
 
         <div class="row justify-content-center gx-3">
           <div class="custom-width">
-            <h4 style="font-size: 16px;">یک ویدیو از خلاصه تمامی نمونه کارهای اجرا شده نظارت خود آپلود کنید.</h4>
+            <h4 style="font-size: 16px;">یک ویدیو از خلاصه تمامی نمونه کارهای مشاوره خود آپلود کنید.</h4>
             <form>
               <div class="input-group">
                 <span class="input-group-addon">
                   <i class="fas fa-video"></i>
                 </span>
-                <input type="text" class="form-control" disabled placeholder="بارگذاری ویدیو">
+                <input type="text" class="form-control" disabled placeholder="بارگزاری ویدیو">
                 <span class="input-group-btn">
-                  <label class="btn btn-secondary" for="videoUpload"><i class="fa fa-search"></i>بارگذاری</label>
+                  <label class="btn btn-secondary" for="videoUpload"><i class="fa fa-search"></i>بارگزاری</label>
                   <input type="file" name="video" class="input-file" id="videoUpload" accept="video/*">
                 </span>
               </div>
@@ -558,7 +558,7 @@
                   <label for="validationTooltip01" class="form-label">آدرس</label>
                   <input type="text" class="form-control" id="validationTooltip01" value="" required>
                   <div class="invalid-tooltip">
-                    لطف آدرس خود را وارد کنید.
+                   لطفا آدرس خود را وارد کنید.
                   </div>
                 </div>
               </form>
@@ -567,13 +567,13 @@
                   <div class="row justify-content-center gx-2">
                     <!-- First column for image upload -->
                     <div class="col-md-4 mt-1 mb-3">
-                      <label for="imageUpload1" class="form-label">گواهی نامه ها و مدارک</label>
+                      <label for="imageUpload1" class="form-label">مدارک تحصیلی</label>
                       <input class="form-control" type="file" id="imageUpload1" accept="image/*" required>
                       <div class="invalid-feedback">
-                        لطفا تصاویر مدارک و گواهی خود را وارد کنید.
+                        لطفا تصاویر مدارک تحصیلی خود را وارد کنید
                       </div>
                       <div class="valid-feedback">
-                        تصاویر مدارک و گواهی با موفقیت بارگزاری شد!
+                        تصاویر مدارک تحصیلی با موفقیت بارگزاری شد!
                       </div>
                     </div>
 
@@ -603,20 +603,9 @@
                   </div>
 
                   <div class="row justify-content-center gx-2">
-                    <!-- First column for image upload -->
-                    <div class="col-md-4 mt-1 mb-3">
-                      <label for="imageUpload1" class="form-label">رزومه کامل موارد نظارت شده</label>
-                      <input class="form-control" type="file" id="imageUpload1" accept="image/*" required>
-                      <div class="invalid-feedback">
-                        لطفا تصاویر رزومه خود را وارد کنید.
-                      </div>
-                      <div class="valid-feedback">
-                        تصاویر رزومه با موفقیت بارگزاری شد!
-                      </div>
-                    </div>
 
-                    <!-- Second column for image upload -->
-                    <div class="col-md-8 mt-1 mb-3">
+                    <!-- first column for image upload -->
+                    <div class="col-md-12 mt-1 mb-3">
                       <label for="imageUpload2" class="form-label">سند موقعیت مکانی یا قولنامه دارای کد رهگیری</label>
                       <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
                       <div class="invalid-feedback">
@@ -628,16 +617,16 @@
                     </div>
                   </div>
 
-                  <!-- third column for image upload -->
+                  <!-- second column for image upload -->
                   <div class="row justify-content-center gx-2">
                   <div class="col-md-12 mt-1 mb-3">
-                    <label for="imageUpload2" class="form-label">گواهی مهندسی نظارت از سازمان نظام مهندسی</label>
+                    <label for="imageUpload2" class="form-label">رزومه کاری شامل سابقه مشاوره به شرکت ها و گلخانه ها</label>
                     <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
                     <div class="invalid-feedback">
-                      لطفا تصاویر گواهی نظارت خود را وارد کنید.
+                      لطفا تصاویر رزومه خود را وارد کنید.
                     </div>
                     <div class="valid-feedback">
-                      تصاویر نظارت با موفقیت بارگزاری شد!
+                      تصاویر رزومه با موفقیت بارگزاری شد!
                     </div>
                   </div>
                 </div>
@@ -663,13 +652,13 @@
                   </div>
                 </div>
 
-                  <!-- MAIN FOR, -->
+                  <!--  MAIN FORM  -->
 
                 <form id="mainForm">
-                  <!--  HIDE FIELD LOCATION   -->
+                  <!--   HIDE FIELD LOCATION    -->
                   <input type="hidden" id="savedLocation" name="location">
 
-                  <!-- CHOOSE LOCATION BUTTON -->
+                  <!--SHOW CHOOSE LOCATION -->
                   <div class="mb-5 mt-1">
                     <label for="selectedLocation" class="form-label">مختصات ذخیره‌شده:</label>
                     <div class="input-group">
@@ -691,7 +680,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
                       </div>
                       <div class="modal-body">
-                          <!-- SEARCH PLACR -->
+                          <!-- SEARCH PLACE  -->
                           <div class="mb-3">
                               <label for="searchLocation" class="form-label">جستجوی شهر یا منطقه:</label>
                               <div class="input-group">
@@ -701,9 +690,9 @@
                           </div>
                           <!-- MAP -->
                           <div id="map"></div>
-                          <!--  SHOW CHOOSE MAP  -->
+                          <!-- SHOW CHOOSE LOCATION   -->
                           <div class="mt-3">
-                              <label for="location" class="form-label">موقعیت مکانی</label>
+                              <label for="location" class="form-label">مختصات انتخابی:</label>
                               <input type="text" class="form-control" id="location" placeholder="مختصات در اینجا نمایش داده می‌شود" readonly>
                           </div>
                       </div>
@@ -715,7 +704,9 @@
               </div>
             </div>
 
+            <!-- subbmit button  -->
             <button class="btn btn-custom" type="submit">ثبت نام</button>
+
         </form>
       </div>
     </div>
