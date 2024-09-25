@@ -380,8 +380,6 @@
                         <i class="bi-envelope nav-icon"></i> تیکت ها
                       </a>
                     </li>
-
-
                   </ul>
 
                   <span class="text-cap">کاربران</span>
@@ -431,14 +429,14 @@
                 <div class="card">
                   <!-- Header -->
                   <div class="card-header border-bottom">
-                    <h5 class="card-header-title">ثبت نام مشاوران</h5>
+                    <h5 class="card-header-title">ثبت نام فروشندگان</h5>
                     <div class="d-flex justify-content-center align-items-center min-vh-80 mb-4 mt-4">
                     </div>
-                      <!-- Video Upload Section -->
+                       <!-- Video Upload Section -->
 
         <div class="row justify-content-center gx-3">
           <div class="custom-width">
-            <h4 style="font-size: 16px;">یک ویدیو از خلاصه تمامی نمونه کارهای مشاوره خود آپلود کنید.</h4>
+            <h4 style="font-size: 16px;">ویدیوهای هفتگی خود را بارگزاری کنید.</h4>
             <form>
               <div class="input-group">
                 <span class="input-group-addon">
@@ -462,15 +460,15 @@
               <label for="validationTooltip01" class="form-label">نام</label>
               <input type="text" class="form-control" id="validationTooltip01" value="" required>
               <div class="invalid-tooltip">
-                لطفا نام خود را وارد کنید.
+                لطفا نام خود را وارد کنید
               </div>
             </div>
 
             <div class="col-md-4 position-relative mt-1 mb-3">
               <label for="validationTooltip02" class="form-label">نام خانوادگی</label>
-              <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
+              <input type="text" class="form-control" id="validationTooltip02" value="" required>
               <div class="invalid-tooltip">
-                لطفا نام خانوادگی خود را وارد کنید.
+                لطفا نام خانوادگی خود را وارد کنید
               </div>
             </div>
 
@@ -543,10 +541,10 @@
               <label for="validationTooltip05" class="form-label">کدپستی</label>
               <input type="text" class="form-control" id="postalCodeInput" required>
               <div class="invalid-tooltip">
-                لطفا کدپستی را صحیح وارد کنید.
+                لطفا کدپستی را وارد کنید.
               </div>
               <div id="postalCodeFeedback" class="valid-feedback">
-                کد پستی نامعتبر.
+                کد پستی نامعتبر
               </div>
             </div>
           </div>
@@ -558,7 +556,7 @@
                   <label for="validationTooltip01" class="form-label">آدرس</label>
                   <input type="text" class="form-control" id="validationTooltip01" value="" required>
                   <div class="invalid-tooltip">
-                   لطفا آدرس خود را وارد کنید.
+                    لطفا آدرس خود را وارد کنید.
                   </div>
                 </div>
               </form>
@@ -567,13 +565,13 @@
                   <div class="row justify-content-center gx-2">
                     <!-- First column for image upload -->
                     <div class="col-md-4 mt-1 mb-3">
-                      <label for="imageUpload1" class="form-label">مدارک تحصیلی</label>
+                      <label for="imageUpload1" class="form-label">جواز کسب یا پروانه تاسیس</label>
                       <input class="form-control" type="file" id="imageUpload1" accept="image/*" required>
                       <div class="invalid-feedback">
-                        لطفا تصاویر مدارک تحصیلی خود را وارد کنید
+                        لطفا تصاویر جوازکسب یا پروانه تاسیس خود را وارد کنید.
                       </div>
                       <div class="valid-feedback">
-                        تصاویر مدارک تحصیلی با موفقیت بارگزاری شد!
+                        تصویر با موفقیت بارگزاری شد!
                       </div>
                     </div>
 
@@ -603,9 +601,20 @@
                   </div>
 
                   <div class="row justify-content-center gx-2">
+                    <!-- First column for image upload -->
+                    <div class="col-md-4 mt-1 mb-3">
+                      <label for="imageUpload1" class="form-label">روزنامه رسمی شرکت</label>
+                      <input class="form-control" type="file" id="imageUpload1" accept="image/*" placeholder="فارسی" required>
+                      <div class="invalid-feedback">
+                        لطفا تصاویر روزنامه رسمی خود را وارد کنید.
+                      </div>
+                      <div class="valid-feedback">
+                        تصاویر روزنامه رسمی با موفقیت بارگزاری شد!
+                      </div>
+                    </div>
 
-                    <!-- first column for image upload -->
-                    <div class="col-md-12 mt-1 mb-3">
+                    <!-- Second column for image upload -->
+                    <div class="col-md-8 mt-1 mb-3">
                       <label for="imageUpload2" class="form-label">سند موقعیت مکانی یا قولنامه دارای کد رهگیری</label>
                       <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
                       <div class="invalid-feedback">
@@ -616,20 +625,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <!-- second column for image upload -->
-                  <div class="row justify-content-center gx-2">
-                  <div class="col-md-12 mt-1 mb-3">
-                    <label for="imageUpload2" class="form-label">رزومه کاری شامل سابقه مشاوره به شرکت ها و گلخانه ها</label>
-                    <input class="form-control" type="file" id="imageUpload2" accept="image/*" required>
-                    <div class="invalid-feedback">
-                      لطفا تصاویر رزومه خود را وارد کنید.
-                    </div>
-                    <div class="valid-feedback">
-                      تصاویر رزومه با موفقیت بارگزاری شد!
-                    </div>
-                  </div>
-                </div>
 
                   <div class="row justify-content-center gx-2">
                   <div class="col-md-6 position-relative mt-1 mb-3">
@@ -652,13 +647,13 @@
                   </div>
                 </div>
 
-                  <!--  MAIN FORM  -->
+                  <!-- MAIN FORM -->
 
                 <form id="mainForm">
-                  <!--   HIDE FIELD LOCATION    -->
+                  <!-- HIDE FIELD LOCATION -->
                   <input type="hidden" id="savedLocation" name="location">
 
-                  <!--SHOW CHOOSE LOCATION -->
+                  <!-- CHOOSE LOCATION -->
                   <div class="mb-5 mt-1">
                     <label for="selectedLocation" class="form-label">موقعیت مکانی</label>
                     <div class="input-group">
@@ -671,7 +666,7 @@
               </form>
 
 
-            <!-- MODAL CHOOSE LOCATION   -->
+            <!-- MODAL CHOOSE LOCATION  -->
             <div class="modal fade" id="locationModal" tabindex="-1" aria-labelledby="locationModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -680,7 +675,7 @@
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="بستن"></button>
                       </div>
                       <div class="modal-body">
-                          <!-- SEARCH PLACE  -->
+                          <!-- SEARCH PLACE -->
                           <div class="mb-3">
                               <label for="searchLocation" class="form-label">جستجوی شهر یا منطقه:</label>
                               <div class="input-group">
@@ -690,9 +685,9 @@
                           </div>
                           <!-- MAP -->
                           <div id="map"></div>
-                          <!-- SHOW CHOOSE LOCATION   -->
+                          <!-- SHOW CHOOSE LOCATION -->
                           <div class="mt-3">
-                              <label for="location" class="form-label">مختصات انتخابی:</label>
+                              <label for="location" class="form-label">موقعیت مکانی</label>
                               <input type="text" class="form-control" id="location" placeholder="مختصات در اینجا نمایش داده می‌شود" readonly>
                           </div>
                       </div>
@@ -706,7 +701,6 @@
 
             <!-- subbmit button  -->
             <button class="btn btn-custom" type="submit">ثبت نام</button>
-
         </form>
       </div>
     </div>
